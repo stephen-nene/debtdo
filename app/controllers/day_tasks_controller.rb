@@ -5,13 +5,14 @@ class DayTasksController < ApplicationController
   def index
     @day_tasks = DayTask.all
 
-    render json: @day_tasks
+    render json: @day_tasks, flag: "restrict"
   end
 
-  # GET /day_tasks/1
-  def show
-    render json: @day_task
-  end
+# GET /day_tasks/1
+def show
+  render json: @day_task
+end
+
 
   # POST /day_tasks
   def create
@@ -41,7 +42,7 @@ class DayTasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_day_task
-      @day_task = DayTask.find(params[:id])
+      @day_task = DayTask.includes(:brain_dumps, :time_frames).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

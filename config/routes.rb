@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   resources :debts
+  resources :day_tasks
+
   resources :brain_dumps
   resources :time_frames
-  resources :day_tasks
-  resources :users
+
+  resources :users do 
+    resources :debts, only: [:index]
+    resources :day_tasks, only: [:index]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
