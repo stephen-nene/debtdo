@@ -48,11 +48,10 @@ class DayTasksController < ApplicationController
     def day_task_params
       params.require(:day_task).permit(
         :user_id, 
-        :date, 
         :created_at,
-        priorities: [:no_1, :no_2, :no_3],
-        brain_dumps_attributes: [:daytask_id, :Content],
-        time_frames_attributes: [:daytask_id, :task, :description, :start, :end]
+        :priorities,
+        # brain_dumps_attributes: [:daytask_id, :Content],
+        # time_frames_attributes: [:daytask_id, :task, :description, :start, :end]
         )
     end
 end
