@@ -46,6 +46,6 @@ class BrainDumpsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def brain_dump_params
-      params.require(:brain_dump).permit(:daytask_id, :Content)
+      params.require(:brain_dump).permit(:daytask_id, :content)
     end
 end

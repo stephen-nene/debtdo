@@ -12,11 +12,9 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_09_16_104659) do
   create_table "brain_dumps", force: :cascade do |t|
-    t.integer "daytask_id", null: false
-    t.text "Content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["daytask_id"], name: "index_brain_dumps_on_daytask_id"
+    t.integer "day_task_id", null: false
+    t.text "content"
+    t.index ["day_task_id"], name: "index_brain_dumps_on_day_task_id"
   end
 
   create_table "day_tasks", force: :cascade do |t|
@@ -43,8 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_104659) do
     t.text "description"
     t.time "start"
     t.time "end"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["daytask_id"], name: "index_time_frames_on_daytask_id"
   end
 
@@ -56,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_104659) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "brain_dumps", "daytasks"
+  add_foreign_key "brain_dumps", "day_tasks"
   add_foreign_key "day_tasks", "users"
   add_foreign_key "debts", "users"
   add_foreign_key "time_frames", "daytasks"

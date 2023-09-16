@@ -7,7 +7,6 @@ class CreateTimeFrames < ActiveRecord::Migration[7.0]
       t.time :start
       t.time :end
 
-      t.timestamps
     end
   end
 end

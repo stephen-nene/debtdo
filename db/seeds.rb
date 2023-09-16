@@ -1,4 +1,4 @@
-require 'faker'
+require "faker"
 
 puts "🔐 Seeding users..."
 
@@ -8,43 +8,35 @@ users = []
   user = User.create(
     username: "stevo_nene#{n + 1}",
     email: "stevekid#{n + 1}@gmail.com",
-    password: "password"
+    password: "password",
   )
   users << user
-  print "👤 Creating user #{n + 1}..."
-  sleep(0.005)
-  puts " ✅"
 end
+pp "👤 Created #{User.count} users ... ✅"
 
-puts "📅 Seeding day tasks..."
+pp "📅 Seeding day tasks..."
 
-# Create day tasks for the past 7 days
-current_date = Date.today
 7.times do |day|
-    users.each do |user|
-      rand(3..5).times do
-        priorities = Array.new(3) { Faker::Hacker.say_something_smart }
-        user.day_tasks.create(
-        priorities: priorities,
-        created_at: current_date - day
-        )
+  users.each do |user|
+    priorities = Array.new(3) { Faker::Hacker.say_something_smart }
+    user.day_tasks.create(
+      priorities: priorities,
+      created_at: Date.today - day,
+    )
   end
 end
-  print "📆 Creating day tasks for #{current_date - day}..."
-  sleep(0.005)
-  puts " ✅"
+puts "📆 Created #{DayTask.count} day task ... ✅"
+
+puts "🧠 Seeding brain dumps..."
+# Create brain dumps for each day task
+DayTask.all.each do |day_task|
+  rand(5..7).times do
+    content = Faker::Lorem.sentence
+    day_task.brain_dumps.create(content: content)
+  end
 end
 
+puts "🧠 Created #{BrainDump.count} brain dumps ... ✅"
+
+
 puts "✅ Seed completed!"
-
-
-
-# Create BrainDumps
-# 10.times do
-#     BrainDump.create(
-#       daytask_id: rand(1..10), # Replace with actual daytask_id values
-#       Content: Faker::Hacker.say_something_smart
-#     )
-#   end
-  
-#   puts 'BrainDumps seeded successfully!'

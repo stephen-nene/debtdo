@@ -50,7 +50,7 @@ class DayTasksController < ApplicationController
         :user_id, 
         :created_at,
         :priorities,
-        # brain_dumps_attributes: [:daytask_id, :Content],
+        # brain_dumps_attributes: [:daytask_id, :content],
         # time_frames_attributes: [:daytask_id, :task, :description, :start, :end]
         )
     end

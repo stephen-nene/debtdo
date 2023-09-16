@@ -1,3 +1,3 @@
 class BrainDump < ApplicationRecord
-  belongs_to :daytask
+  belongs_to :day_task
 end
