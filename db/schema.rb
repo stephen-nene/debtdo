@@ -36,12 +36,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_104659) do
   end
 
   create_table "time_frames", force: :cascade do |t|
-    t.integer "daytask_id", null: false
+    t.integer "day_task_id", null: false
     t.string "task"
     t.text "description"
     t.time "start"
     t.time "end"
-    t.index ["daytask_id"], name: "index_time_frames_on_daytask_id"
+    t.index ["day_task_id"], name: "index_time_frames_on_day_task_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,5 +55,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_104659) do
   add_foreign_key "brain_dumps", "day_tasks"
   add_foreign_key "day_tasks", "users"
   add_foreign_key "debts", "users"
-  add_foreign_key "time_frames", "daytasks"
+  add_foreign_key "time_frames", "day_tasks"
 end

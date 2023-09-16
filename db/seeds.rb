@@ -31,12 +31,30 @@ puts "🧠 Seeding brain dumps..."
 # Create brain dumps for each day task
 DayTask.all.each do |day_task|
   rand(5..7).times do
-    content = Faker::Lorem.sentence
+    content = Faker::Quotes::Shakespeare.as_you_like_it_quote
     day_task.brain_dumps.create(content: content)
   end
 end
 
 puts "🧠 Created #{BrainDump.count} brain dumps ... ✅"
+
+puts "⏰ Seeding time frames..."
+
+# Create time frames for each day task
+DayTask.all.each do |day_task|
+  rand(4..6).times do
+    start_time = rand(1..3).hours.ago.strftime("%H:%M:%S")
+    end_time = (rand(1..3) + 1).hours.ago.strftime("%H:%M:%S")
+
+    day_task.time_frames.create(
+      task: Faker::Quote.singular_siegler,
+      description: Faker::Quotes::Shakespeare.hamlet_quote,
+      start: start_time,
+      end: end_time
+    )
+  end
+end
+puts "⏰ Created #{TimeFrame.count} time frames ... ✅"
 
 
 puts "✅ Seed completed!"
