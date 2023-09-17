@@ -1,5 +1,5 @@
 class DayTaskSerializer < ActiveModel::Serializer
-  attributes :id, :priorities, :brain_dumps, :created_at
+  attributes :id, :priorities, :brain_dumps, :time_frames, :created_at
   
   # belongs_to :user
   has_many :brain_dumps

@@ -1,18 +1,20 @@
+require 'will_paginate/array'
+
 class DayTasksController < ApplicationController
   before_action :set_day_task, only: %i[ show update destroy ]
 
-  # GET /day_tasks
-  def index
-    @day_tasks = DayTask.all
+# GET /day_tasks
+def index
+  @day_tasks = DayTask.includes(:brain_dumps, :time_frames).paginate(page: params[:page], per_page: 7)
 
-    render json: @day_tasks, flag: "restrict"
-  end
-
-# GET /day_tasks/1
-def show
-  render json: @day_task
+  render json: @day_tasks, flag: "restrict"
 end
 
+
+  # GET /day_tasks/1
+  def show
+    render json: @day_task
+  end
 
   # POST /day_tasks
   def create
@@ -40,19 +42,20 @@ end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_day_task
-      @day_task = DayTask.includes(:brain_dumps, :time_frames).find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def day_task_params
-      params.require(:day_task).permit(
-        :user_id, 
-        :created_at,
-        :priorities,
-        # brain_dumps_attributes: [:daytask_id, :content],
-        # time_frames_attributes: [:daytask_id, :task, :description, :start, :end]
-        )
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_day_task
+    @day_task = DayTask.includes(:brain_dumps, :time_frames).find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def day_task_params
+    params.require(:day_task).permit(
+      :user_id,
+      :created_at,
+      :priorities,
+      # brain_dumps_attributes: [:daytask_id, :content],
+      # time_frames_attributes: [:daytask_id, :task, :description, :start, :end]
+    )
+  end
 end
