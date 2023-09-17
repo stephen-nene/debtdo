@@ -53,7 +53,7 @@ end
     params.require(:day_task).permit(
       :user_id,
       :created_at,
-      :priorities,
+      priorities: [:no_1, :no_2, :no_3]
       # brain_dumps_attributes: [:daytask_id, :content],
       # time_frames_attributes: [:daytask_id, :task, :description, :start, :end]
     )
