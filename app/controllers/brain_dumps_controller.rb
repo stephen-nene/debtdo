@@ -13,16 +13,28 @@ class BrainDumpsController < ApplicationController
     render json: @brain_dump
   end
 
-  # POST /brain_dumps
-  def create
-    @brain_dump = BrainDump.new(brain_dump_params)
+# POST /brain_dumps
+def create
+  day_task_id = params[:day_task_id]
+  content = params[:content]
 
-    if @brain_dump.save
-      render json: @brain_dump, status: :created, location: @brain_dump
-    else
-      render json: @brain_dump.errors, status: :unprocessable_entity
-    end
+  # Check if there are at least 3 content items
+  if content.length < 4
+    render json: { error: "At least 4 content items are required" }, status: :unprocessable_entity
+    return
   end
+
+  # Prepare an array of hash values for bulk insertion
+  brain_dumps = content.map { |c| { day_task_id: day_task_id, content: c } }
+
+  # Perform bulk insertion
+  if BrainDump.insert_all(brain_dumps)
+    render json: { message: "Brain dumps created successfully" }, status: :created
+  else
+    render json: { error: BrainDump.errors.full_messages }, status: :unprocessable_entity
+  end
+end
+
 
   # PATCH/PUT /brain_dumps/1
   def update
@@ -39,13 +51,14 @@ class BrainDumpsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_brain_dump
-      @brain_dump = BrainDump.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def brain_dump_params
-      params.require(:brain_dump).permit(:daytask_id, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_brain_dump
+    @brain_dump = BrainDump.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def brain_dump_params
+    params.require(:brain_dump).permit(:day_task_id, content: [])
+  end
 end

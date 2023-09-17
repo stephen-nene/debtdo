@@ -1,3 +1,3 @@
 class BrainDumpSerializer < ActiveModel::Serializer
-  attributes :content
+  attributes :id, :content
 end
