@@ -54,7 +54,7 @@ end
       :user_id,
       :created_at,
       priorities: [:no_1, :no_2, :no_3]
-      brain_dumps_attributes: [:day_task_id, :content],
+      brain_dumps_attributes: [:day_task_id, content:[]],
       # time_frames_attributes: [:day_task_id, :task, :description, :start, :end]
     )
   end
