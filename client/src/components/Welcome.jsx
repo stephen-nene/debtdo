@@ -1,8 +1,11 @@
 import { useState } from "react";
-import {message} from "antd"
+import { NavLink, Link } from 'react-router-dom';
+import { message } from "antd"
 
 
 function App() {
+
+  const [loggedin, setLoggedIn] = useState(true);
 
 
 
@@ -14,16 +17,22 @@ function App() {
       <div className="row">
         <div className="border border-red-300 bg-green-200 ">
 
-        <a className="logo vite" onClick={()=>message.info("open debts here")} target="_blank">
-          <span>debts</span>
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
+          <NavLink className="logo vite" to="/debts">
+
+              <span>debts</span>
+              <img src="/vite.svg" className="logo vite" alt="Vite logo" />
+
+          </NavLink>
+
         </div>
-        <div className="d"></div>
-        <a onClick={()=>message.info("open timeBox here")} target="_blank">
-          <span>timebox</span>
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
+        {/* <div className="d"></div> */}
+        <NavLink   to="/timebox">
+
+
+            <span>timebox</span>
+            <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
+
+        </NavLink>
       </div>
 
 
