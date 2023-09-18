@@ -1,7 +1,5 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-
 
 import Welcome from "./components/Welcome";
 import Auth from "./components/Auth/Auth";
@@ -10,17 +8,22 @@ import { HomeDebt } from "./components/debts/HomeDebts";
 import Error404 from './components/Error404.jsx';
 
 import "./assets/styles/App.css";
+import { message } from "antd";
 
 function App() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(false); // Change this to false if the user is not logged in
 
-  if (user){
-    navigate("/") 
-  }else{
-    navigate("/auth") 
-  }
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    } else {
+      message.error("please login first")
+      navigate("/auth");
+    }
+  }, [user, navigate]);
+
 
   return (
     <>
