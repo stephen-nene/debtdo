@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    # /me
     def show
         @user = User.find_by(id: session[:user_id])
 
