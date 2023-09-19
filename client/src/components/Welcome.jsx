@@ -11,11 +11,11 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="text-green-200">Welcome to Debto's (username) </h1>
+      <h1 className="">Welcome to Debto's (username) </h1>
       <h3>Where do you wanna go</h3>
 
       <div className="row">
-        <div className="border border-red-300 bg-green-200 ">
+        <div className=" ">
 
           <NavLink className="logo vite" to="/debts">
 

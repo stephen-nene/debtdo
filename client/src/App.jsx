@@ -7,23 +7,19 @@ import { HomeBox } from "./components/timebox/HomeBox";
 import { HomeDebt } from "./components/debts/HomeDebts";
 import Error404 from './components/Error404.jsx';
 
-import "./assets/styles/App.css";
-import { message } from "antd";
+// import "./assets/styles/App.css";
 
 function App() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(false);
 
-  const [user, setUser] = useState(false); // Change this to false if the user is not logged in
-
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    } else {
-      message.error("please login first")
-      navigate("/auth");
-    }
-  }, [user, navigate]);
-
+  // useEffect(() => {
+  //   if (user) {
+  //     navigate("/");
+  //   } else {
+  //     navigate("/auth");
+  //   }
+  // }, [user, navigate]);
 
   return (
     <>

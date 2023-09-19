@@ -6,8 +6,8 @@ export default function NotFound() {
 
     return (
         <div className="flex w-full -view">
-            <div className="w-full bg-gray-500 m-auto text-center">
-                <div className="p-6 bg-gray-300 shadow-md rounded-md">
+            <div className="w-full text-center">
+                <div className="p-6 bg-gray-30 shadow-md rounded-md">
                     <img
                         src="https://bitly.com/static/graphics/meditation.png"
                         alt="Not Found"
