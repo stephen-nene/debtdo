@@ -7,7 +7,8 @@
 
 allowed_origins = [
   "http://localhost:1420",
-  "http://localhost:5173",
+  "https://debtodo.vercel.app",
+  "https://debtodo.onrender.com"
 ]
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
