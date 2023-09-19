@@ -4,8 +4,8 @@ import { message } from "antd";
 
 import { login, logout } from "../store/actions/userAction"
 
-const apiUrl = 'http://127.0.0.1:3000'
-// const apiUrl = 'https://debtodo-api.onrender.com'
+// const apiUrl = 'http://127.0.0.1:3000'
+const apiUrl = 'https://debtodo-api.onrender.com'
 
 function showMessage(type, content, duration) {
     return message[type]({

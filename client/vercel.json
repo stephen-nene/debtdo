@@ -3,10 +3,13 @@
     {
       "source": "/(.*)",
       "destination": "/"
-    },
+    }
+  ],
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "http://127.0.0.1:3000/$1"
+      "handle": "proxy",
+      "src": "^/api/(.*)",
+      "destination": "http://127.0.0.1:3000/api/$1"
     }
   ]
 }
