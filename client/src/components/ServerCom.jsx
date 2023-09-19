@@ -18,7 +18,7 @@ export const handleServerLogin = async (dispatch, formData) => {
     const loadingMessage = showMessage('loading', 'Logging in ...', 0);
     try {
 
-        const response = await axios.post(`/login`, formData);
+        const response = await axios.post(`/api/login`, formData);
 
         dispatch(login(response.data));
         message.success('Logged in successfully');
