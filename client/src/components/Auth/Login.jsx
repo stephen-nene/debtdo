@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { message } from "antd";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+
+
+import {handleServerLogin} from "../ServerCom"
 
 export default function Login() {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -28,7 +34,7 @@ export default function Login() {
     if (email.trim() === "" || password.trim() === "") {
       message.error("Please fill in all fields.");
     } else {
-      message.success(`Logged in as ${email}`);
+      handleServerLogin(dispatch,formData)
     }
   };
 
@@ -42,9 +48,8 @@ export default function Login() {
           value={formData.email}
           onChange={handleInputChange}
           placeholder="Email"
-          className={`border rounded-md px-3 py-2 w-64 focus:outline-none ${
-            formData.email.trim() === "" ? "border-rose-500" : ""
-          }`}
+          className={`border rounded-md px-3 py-2 w-64 focus:outline-none ${formData.email.trim() === "" ? "border-rose-500" : ""
+            }`}
         />
       </div>
       <div className="relative mb-4">
@@ -54,9 +59,8 @@ export default function Login() {
           value={formData.password}
           onChange={handleInputChange}
           placeholder="Password"
-          className={`border rounded-md px-3 py-2 w-64 focus:outline-none ${
-            formData.password.trim() === "" ? "border-rose-500" : ""
-          }`}
+          className={`border rounded-md px-3 py-2 w-64 focus:outline-none ${formData.password.trim() === "" ? "border-rose-500" : ""
+            }`}
         />
         <span
           className="absolute right-2 top-1/2 transform -translate-y-1/2 focus:outline-none cursor-pointer"
@@ -82,7 +86,7 @@ export default function Login() {
       </div>
       <div className="text-sm mt-2">
         Not yet a user?{" "}
-        
+
         <NavLink to="/signup" className="text-blue-500 hover:underline">
           Sign up
         </NavLink>

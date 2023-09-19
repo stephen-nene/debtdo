@@ -3,7 +3,6 @@
 const initialState = {
   loggedIn: false,
   userData: null,
-  user: null,
   suppliers: []
 };
 
@@ -19,11 +18,7 @@ const userReducer = (state = initialState, action) => {
         loggedIn: false,
         userData: null
       };
-    case 'FETCH_USER':
-      return {
-        loggedIn: true,
-        user: action.payload
-      };
+
 
     default:
       return state;

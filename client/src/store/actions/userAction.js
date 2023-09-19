@@ -13,8 +13,4 @@ export const login = (userData) => {
     };
   };
 
-  export const fetchUser = (user) => ({
-    type: 'FETCH_USER',
-    payload: user,
-  });
 

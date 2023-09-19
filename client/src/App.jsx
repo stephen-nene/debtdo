@@ -16,9 +16,8 @@ import { message } from "antd";
 
 function App() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(true);
   const isLoggedIn = useSelector(state => state.user.loggedIn); // Access the loggedIn state from Redux
-  const userD = useSelector(state => state.user.user);
+  const userD = useSelector(state => state.user.userData);
 
 
 console.log(isLoggedIn,userD)
