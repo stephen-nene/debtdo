@@ -3,18 +3,10 @@
     {
       "source": "/(.*)",
       "destination": "/"
-    }
-  ],
-  "routes": [
-    {
-      "handle": "rewrite",
-      "src": "^/api/(.*)",
-      "destination": "/api/$1"
     },
     {
-      "handle": "proxy",
-      "src": "^/api/(.*)",
-      "destination": "http://127.0.0.1:3000/api/$1"
+      "source": "/api/:match",
+      "destination": "http://127.0.0.1:3000/api/:match"
     }
   ]
 }
