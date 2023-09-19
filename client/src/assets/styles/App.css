@@ -1,8 +1,0 @@
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
-}
-
-.logo.react:hover {
-  cursor: pointer;
-  filter: drop-shadow(0 0 2em #61dafb);
-}

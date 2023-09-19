@@ -13,17 +13,8 @@ export const login = (userData) => {
     };
   };
 
-  export const fetchSuppliers = (suppliers) => ({
-    type: 'FETCH_SUPPLIERS',
-    payload: suppliers,
+  export const fetchUser = (user) => ({
+    type: 'FETCH_USER',
+    payload: user,
   });
 
-  export const addNewSupplier = (supplier) => ({
-    type: 'ADD_NEW_SUPPLIER',
-    payload:  supplier ,
-  });
-  
-  export const deleteSupplierSuccess = (supplierId) => ({
-    type: 'DELETE_SUPPLIER_SUCCESS',
-    payload: supplierId,
-  });
