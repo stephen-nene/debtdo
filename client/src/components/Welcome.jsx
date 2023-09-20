@@ -4,6 +4,8 @@ import { FcDebt, FcTimeline } from 'react-icons/fc';
 import { useSelector, useDispatch } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
 
+import {Navbar} from './Navbar';
+
 
 
 function Welcome({loading}) {
@@ -28,7 +30,7 @@ function Welcome({loading}) {
 
   return (
     <>
-      <div className="container text-center justify-center mt-[200px]">
+      <div className="container text-center justify-center ">
         {loading ? (
           <>
             <div className="flex flex-col justify-center items-center">
@@ -49,7 +51,9 @@ function Welcome({loading}) {
           </>
         ) : (
           <>
-          <h1 className="">Welcome to Debto's 
+          
+          <Navbar/>
+          <h1 className="mt-9">Welcome to Debto's 
           <span className="uppercase  text-yellow-500 font-bold text-xl ml-2 mr-2 
           "> {userD ? userD.user.username : ''}</span>
           </h1>

@@ -11,6 +11,8 @@ import Signup from "./components/Auth/Signup";
 import { HomeBox } from "./components/timebox/HomeBox";
 import { HomeDebt } from "./components/debts/HomeDebts";
 import Error404 from './components/Error404.jsx';
+import { Profile } from "./components/Profile";
+
 import { handleGetCurrentUser } from "./components/ServerCom";
 
 import "./assets/styles/App.css";
@@ -54,6 +56,8 @@ function App() {
         <Route path="/timebox" element={<HomeBox />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
+
         <Route path='/*' element={<Error404 />} />
       </Routes>
     </>
