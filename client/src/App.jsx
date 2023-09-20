@@ -27,6 +27,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true)
       try {
         await handleGetCurrentUser(dispatch, navigate);
         setLoading(false);

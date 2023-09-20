@@ -4,8 +4,8 @@ import { message } from "antd";
 
 import { login, logout } from "../store/actions/userAction"
 
-// const apiUrl = 'http://127.0.0.1:3000'
-const apiUrl = 'https://debtodo-api.onrender.com'
+const apiUrl = 'http://127.0.0.1:3000'
+// const apiUrl = 'https://debtodo-api.onrender.com'
 
 function showMessage(type, content, duration) {
     return message[type]({
@@ -24,13 +24,13 @@ export const handleServerLogin = async (dispatch, formData, navigate) => {
             message.success('Logged in successfully');
             navigate('/');
         } else {
-            showMessage('error', 'Login failed. Please try again later.', 3);
+            showMessage('error', 'Login failed. Please try again .', 3);
         }
     } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
             showMessage('error', error.response.data.error);
         } else {
-            showMessage('error', 'Login failed. Please try again later.');
+            showMessage('error', 'server error. Please try again later.');
         }
     } finally {
         loadingMessage();
