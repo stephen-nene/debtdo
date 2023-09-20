@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
+import { message } from "antd";
 
 
 
@@ -10,40 +11,44 @@ import Signup from "./components/Auth/Signup";
 import { HomeBox } from "./components/timebox/HomeBox";
 import { HomeDebt } from "./components/debts/HomeDebts";
 import Error404 from './components/Error404.jsx';
+import { handleGetCurrentUser } from "./components/ServerCom";
 
 import "./assets/styles/App.css";
-import { message } from "antd";
 
 function App() {
-  const navigate = useNavigate();
-  const isLoggedIn = useSelector(state => state.user.loggedIn); // Access the loggedIn state from Redux
+  const isLoggedIn = useSelector(state => state.user.loggedIn);
   const userD = useSelector(state => state.user.userData);
+  const isMounted = useRef(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(false);
 
 
-console.log(isLoggedIn,userD)
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        await handleGetCurrentUser(dispatch, navigate);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setLoading(false);
+      }
+    }
+    if (!isMounted.current && userD === null && !isLoggedIn) {
 
-  // useEffect(() => {
-  //   fetch('https://mnetimall.onrender.com/me',{
-  //     credentials: 'include'
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       if (data) {
-  //         // Dispatch the 'LOGIN' action with user data here if needed
-  //       } else {
-  //         // Dispatch the 'LOGOUT' action here if needed
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.error('Error:', error);
-  //     });
-  // }, []);
+      fetchData();
+      isMounted.current = true;
+    }
+
+
+  }, [navigate, userD]);
 
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route path="/" element={<Welcome loading={loading} />} />
         <Route path="/debts" element={<HomeDebt />} />
         <Route path="/timebox" element={<HomeBox />} />
         <Route path="/login" element={<Login />} />

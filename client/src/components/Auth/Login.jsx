@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { message } from "antd";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -10,12 +10,13 @@ import {handleServerLogin} from "../ServerCom"
 
 export default function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +35,7 @@ export default function Login() {
     if (email.trim() === "" || password.trim() === "") {
       message.error("Please fill in all fields.");
     } else {
-      handleServerLogin(dispatch,formData)
+      handleServerLogin(dispatch,formData, navigate)
     }
   };
 
