@@ -1,13 +1,17 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FcPrevious, FcNext } from "react-icons/fc";
 
 import { Navbar } from "../Navbar";
+import NewDebt from "../modals/NewDebt"
 
 export const HomeBox = (props) => {
+    const [NewDebtModal, setNewDebtModal] = useState(false);
     const [currentDate, setCurrentDate] = useState(
         new Date().toISOString().split("T")[0]
     );
+
+    // console.log(currentDate)
 
 
     const handleDate = (operator) => {
@@ -30,11 +34,15 @@ export const HomeBox = (props) => {
         );
     };
 
+    const handleInfoButtonClick = () => {
+        setNewDebtModal(true)
+    }
+
     const navigate = useNavigate()
 
     return (
         <div className="text-center -view">
-            <Navbar/>
+            <Navbar />
 
             <div className="my-5 date-selector">
                 <p className="mb-4">
@@ -64,7 +72,7 @@ export const HomeBox = (props) => {
                         />
                     </button>
                 </div>
-                
+
                 {!isToday(new Date(currentDate)) && (
 
                     <button
@@ -79,6 +87,23 @@ export const HomeBox = (props) => {
             </div>
 
             <p>home box</p>
+
+            {NewDebtModal ? (null) : (
+                <button
+                    className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                    onClick={handleInfoButtonClick}
+                >
+                    <span className="text-xl mr-2">+</span>
+                    New
+                </button>
+            )}
+
+            {NewDebtModal && (
+                <NewDebt
+                    date={currentDate}
+                    closeModal={() => setNewDebtModal(false)}
+                />
+            )}
         </div>
     );
 }

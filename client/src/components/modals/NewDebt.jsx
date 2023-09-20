@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { handleSave } from "../ServerCom";
 
-const NewDebt = ({closeModal}) => {
+const NewDebt = ({ closeModal, date }) => {
     const dispatch = useDispatch()
     const [newDebt, setNewDebt] = useState({
         name: "",
@@ -31,7 +31,7 @@ const NewDebt = ({closeModal}) => {
 
         if (newDebt.amount === "") {
             newErrors.amount = "Amount is required";
-        } else if (isNaN(newDebt.amount) ) {
+        } else if (isNaN(newDebt.amount)) {
             newErrors.amount = "Amount must be a positive number";
         }
 
@@ -41,6 +41,9 @@ const NewDebt = ({closeModal}) => {
         // Return true if there are no errors, otherwise false
         return Object.keys(newErrors).length === 0;
     };
+    // console.log(date, new Date(date).toLocaleDateString(undefined, {
+    //     weekday: "long",
+    // }))
 
 
     const handleInputChange = (e) => {
@@ -60,9 +63,19 @@ const NewDebt = ({closeModal}) => {
         <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="bg-gray-800 w-[80%] p-4 shadow-md rounded-md">
                 <div className="header flex items-center justify-between px-4 py-2 bg-gray-700 text-white">
-                    <h2 className="text-lg font-semibold">New Debt</h2>
+                    <h2 className="text-lg font-semibold">
+                        Creating Debt on{" "}
+                        <span className="text-rose-600">
+                            {new Date(date).toLocaleDateString(undefined, {
+                                weekday: "long",
+                            })}{" "}
+                            {date}
+                        </span>
+                    </h2>
+
+
                     <AiOutlineClose onClick={closeModal}
-                    className="text-xl cursor-pointer hover:text-red-500" />
+                        className="text-xl cursor-pointer hover:text-red-500" />
                 </div>
 
                 <div className="mb-4">
@@ -125,7 +138,7 @@ const NewDebt = ({closeModal}) => {
 
                 <button
                     className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    onClick={()=>handleSave(dispatch,closeModal,newDebt,validateFields)}
+                    onClick={() => handleSave(dispatch, closeModal, newDebt, validateFields)}
                 >
                     Save
                 </button>
