@@ -13,34 +13,31 @@ export const Navbar = (props) => {
         <div className="flex items-center space-x-4">
           <NavLink
             to="/"
-            exact
-            activeClassName="text-yellow-500"
             className="text-white text-xl hover:text-gray-900 transition duration-300 ease-in-out"
           >
             Home
           </NavLink>
           <NavLink
             to="/debts"
-            activeClassName="text-yellow-500"
+            // activeClassName="text-yellow-500"
             className="text-white text-xl hover:text-gray-900 transition duration-300 ease-in-out"
           >
             Debts
           </NavLink>
           <NavLink
             to="/timebox"
-            activeClassName="text-yellow-500"
+            // activeClassName="text-yellow-500"
             className="text-white text-xl hover:text-gray-900 transition duration-300 ease-in-out"
           >
             Timebox
           </NavLink>
         </div>
 
-        {/* User information */}
         <div className="text-white">
           {userD ? (
             <NavLink
               to="/profile"
-              activeClassName="text-yellow-500"
+              // activeClassName="text-yellow-500"
               className="text-xl hover:text-gray-900 transition duration-300 ease-in-out "
             >
               {userD.user.username}
