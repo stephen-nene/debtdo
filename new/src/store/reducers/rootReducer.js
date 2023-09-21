@@ -1,11 +1,11 @@
 // rootReducer.js
 
 import { combineReducers } from 'redux';
-import counterReducer from './counterReducer';
+import appReducer from './appReducer';
 import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
+  app: appReducer,
   user: userReducer,
   // more reducers here
 });

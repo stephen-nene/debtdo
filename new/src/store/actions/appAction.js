@@ -7,6 +7,7 @@ export const addCount = () => {
   };
 
 }
+
 export const subCount = () => {
   return {
     type: 'SUB_COUNT'
@@ -14,8 +15,8 @@ export const subCount = () => {
 
 }
 
-export const resetCount = () => {
+export const setDarkMode = () => {
   return{
-    type: 'RESET_COUNT'
+    type: 'SET_DARK_MODE'
   }
 }

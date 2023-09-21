@@ -3,15 +3,18 @@ import { NavLink } from "react-router-dom";
 import { BsFillSunFill, BsMoonStarsFill, BsFillPersonFill } from 'react-icons/bs'
 import { GrMenu, GrClose } from 'react-icons/gr'
 import { message } from "antd";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 
 import '../assets/styles/navbar.css'
 
-export function Navbar({ darkMode, setDarkMode }) {
+import { setDarkMode } from "../store/actions/appAction";
+
+export function Navbar({ props }) {
+    const darkMode = useSelector(state => state.app.darkMode);
     const [toggleMenu, setToggleMenu] = useState(false)
     const isLoggedIn = useSelector(state => state.user.loggedIn);
+    const dispatch = useDispatch();
 
-    // console.log(isLoggedIn)
 
     return (
         <div className="-view">
@@ -68,7 +71,7 @@ export function Navbar({ darkMode, setDarkMode }) {
                             {darkMode ? (
 
                                 <button
-                                    onClick={() => { setDarkMode(false) }}
+                                    onClick={() => { dispatch(setDarkMode()) }}
                                     className="dark cursor-pointer"
                                 >
                                     <BsFillSunFill className="text-black" />
@@ -76,7 +79,7 @@ export function Navbar({ darkMode, setDarkMode }) {
                             ) : (
 
                                 <button
-                                    onClick={() => { setDarkMode(true) }}
+                                    onClick={() => { dispatch(setDarkMode()) }}
                                     className="darck cursor-pointer"
                                 >
                                     <BsMoonStarsFill className="text-white" />

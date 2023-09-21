@@ -9,16 +9,15 @@ import Error404 from './components/Error404';
 
 import './assets/styles/App.css';
 
-import { addCount, subCount, resetCount } from './store/actions/counterAction'
 
 
 function App() {
-  const count = useSelector(state => state.counter.count);
+  // const count = useSelector(state => state.counter.count);
   const dispatch = useDispatch();
   const [darkMode, setDarkMode] = useState(false)
 
   return (
-    <div className="">
+    <div className="bg-gray-800">
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
 
       <Routes>
@@ -29,7 +28,7 @@ function App() {
         {/* <Route path="/signup" element={<Signup />} /> */}
         {/* <Route path="/profile" element={<Profile />} /> */}
 
-        <Route path='/*' element={<Error404 />} />
+        <Route path='/*' element={<Error404 darkMode={darkMode} setDarkMode={setDarkMode}/>} />
       </Routes>
 
     </div>
