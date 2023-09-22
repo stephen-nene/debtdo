@@ -12,13 +12,13 @@ import { setDarkMode } from "../store/actions/appAction";
 export function Navbar({ props }) {
     const darkMode = useSelector(state => state.app.darkMode);
     const [toggleMenu, setToggleMenu] = useState(false)
-    const isLoggedIn = useSelector(state => state.user.loggedIn);
+    const isLoggedIn = useSelector(state => !state.user.loggedIn);
     const dispatch = useDispatch();
 
 
     return (
         <div className="-view">
-            <header className={`${darkMode ? "bg-gray-900 text-white" : "bg-rose-600 "}`}>
+            <header className={`${darkMode ? "bg-gray-900 text-white" : "bg-rose-800 text-white"}`}>
                 <nav className="flex justify-between items-center w-[92%] p-3 mx-auto">
 
                     <div className="">
@@ -27,7 +27,7 @@ export function Navbar({ props }) {
                         </NavLink>
                     </div>
 
-                    <div className={`md:static absolute ${darkMode ? "bg-gray-900" : "bg-rose-600"} md:min-h-fit min-h-[20vh] left-0 ${!toggleMenu ? 'top-[-100%]' : 'top-[6.5%]'} top-[-100%] md:w-auto w-full flex items-center px-5`}>
+                    <div className={`md:static absolute ${darkMode ? "bg-gray-900" : "bg-rose-800"} md:min-h-fit min-h-[20vh] left-0 ${!toggleMenu ? 'top-[-100%]' : 'top-[6.5%]'} top-[-100%] md:w-auto w-full flex items-center px-5 z-10`}>
                         <ul className="flex md:flex-row flex-col md:items-center md:gap-7 gap-4 text-xl">
                             <li>
                                 <NavLink
@@ -80,9 +80,9 @@ export function Navbar({ props }) {
 
                                 <button
                                     onClick={() => { dispatch(setDarkMode()) }}
-                                    className="darck cursor-pointer"
+                                    className="darxk bg-black cursor-pointer"
                                 >
-                                    <BsMoonStarsFill className="text-white" />
+                                    <BsMoonStarsFill className=" text-white" />
                                 </button>
                             )}
                         </div>
