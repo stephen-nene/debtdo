@@ -8,6 +8,7 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Error404 from './components/pages/Error404';
 import Welcome from './components/pages/Welcome';
+import {Profile} from './components/pages/Profile';
 
 
 
@@ -32,7 +33,7 @@ function App() {
         {/* <Route path="/timebox" element={<HomeBox />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {/* <Route path="/profile" element={<Profile />} /> */}
+        <Route path="/profile" element={<Profile />} />
 
         <Route path='/*' element={<Error404 />} />
       </Routes>
