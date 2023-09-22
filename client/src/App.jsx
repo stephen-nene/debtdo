@@ -27,25 +27,25 @@ function App() {
   const [loading, setLoading] = useState(false);
 
 
-  useEffect(() => {
-    async function fetchData() {
-      setLoading(true)
-      try {
-        await handleGetCurrentUser(dispatch, navigate);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setLoading(false);
-      }
-    }
-    if (!isMounted.current && userD === null && !isLoggedIn) {
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     setLoading(true)
+  //     try {
+  //       await handleGetCurrentUser(dispatch, navigate);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //       setLoading(false);
+  //     }
+  //   }
+  //   if (!isMounted.current && userD === null && !isLoggedIn) {
 
-      fetchData();
-      isMounted.current = true;
-    }
+  //     fetchData();
+  //     isMounted.current = true;
+  //   }
 
 
-  }, [navigate, userD]);
+  // }, [navigate, userD]);
 
 
   return (

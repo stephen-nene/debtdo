@@ -37,8 +37,12 @@ export default function Signup() {
   };
 
   return (
-    <div className=" flex flex-col items-center justify-center ">
-      <h2 className="text-2xl font-semibold mb-4">Sign-Up</h2>
+    <div className="px-[50px]  flex flex-col items-center text-center ">
+      
+      <div className="bg-rose-700 rounded-lg shadow-lg p-8 w-[350px]">
+        <h2 className="text-2xl font-semibold mb-4 font-croissant">Sign-Up</h2>
+
+
       <div className="text-black">
 
         <div className="mb-4">
@@ -75,13 +79,13 @@ export default function Signup() {
               }`}
           />
           <span
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 focus:outline-none cursor-pointer"
+            className="absolute right-9 top-1/2 transform -translate-y-1/2 focus:outline-none cursor-pointer"
             onClick={handleTogglePassword}
           >
             {showPassword ? (
-              <AiFillEyeInvisible className="text-yellow-500" />
+              <AiFillEyeInvisible size={20}  className="text-yellow-500" />
             ) : (
-              <AiFillEye className="text-yellow-500" />
+              <AiFillEye size={20} className="text-yellow-500" />
             )}
           </span>
         </div>
@@ -96,13 +100,13 @@ export default function Signup() {
               }`}
           />
           <span
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 focus:outline-none cursor-pointer"
+            className="absolute right-9 top-1/2 transform -translate-y-1/2 focus:outline-none cursor-pointer"
             onClick={handleTogglePassword}
           >
             {showPassword ? (
-              <AiFillEyeInvisible className="text-yellow-500" />
+              <AiFillEyeInvisible size={20} className="text-yellow-500 " />
             ) : (
-              <AiFillEye className="text-yellow-500" />
+              <AiFillEye size={20} className="text-yellow-500" />
             )}
           </span>
         </div>
@@ -116,9 +120,10 @@ export default function Signup() {
       </button>
       <div className="text-sm mt-2">
         Already have an account?{" "}
-        <NavLink to="/login" className="text-blue-500 hover:underline">
+        <NavLink to="/login" className="text-blue-900 text-lg hover:underline">
           Log in
         </NavLink>
+      </div>
       </div>
     </div>
   );

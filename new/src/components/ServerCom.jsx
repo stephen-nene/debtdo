@@ -40,23 +40,24 @@ export const handleServerLogin = async (dispatch, formData, navigate) => {
 };
 
 export const handleGetCurrentUser = async (dispatch, navigate) => {
-    const loadingMessage = showMessage('loading', 'Getting current user ...', 0);
+    // const loadingMessage = showMessage('loading', 'Getting current user ...', 0);
     try {
-        const response = await axios.get(`${apiUrl}/me`);
-        // const response = await axios.get(`/api/me`);
-        showMessage('success', 'current user fetched successfully', 3);
+        // const response = await axios.get(`${apiUrl}/me`);
+        const response = await axios.get(`/api/me`);
+        // showMessage('success', 'current user fetched successfully', 2);
         dispatch(login(response.data));
         navigate('/');
     } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
             showMessage('error', error.response.data.error + ' please login');
-            setTimeout(() => { navigate('/login'); }, 0)
+            // setTimeout(() => { navigate('/login'); }, 0)
         } else {
             showMessage('error', 'Login failed. Please try again later.');
         }
-    } finally {
-        loadingMessage();
     }
+    //  finally {
+    //     loadingMessage();
+    // }
 }
 
 export const handleFetchDebts = (dispatch) => {

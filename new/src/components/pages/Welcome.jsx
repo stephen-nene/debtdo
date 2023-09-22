@@ -5,13 +5,45 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 
+import { handleGetCurrentUser } from '../ServerCom';
+
 
 
 function Welcome({ loading }) {
   const isLoggedIn = useSelector(state => state.user.loggedIn);
   const user = useSelector(state => state.user.userData);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const [secs, setSecs] = useState(5);
+
+  useEffect(() => {
+    console.log("fetched");
+      if (user === null) {
+      handleGetCurrentUser(dispatch, navigate);
+    }  
+    console.log("ended fetch");
+  }, [user, dispatch, navigate]);
+  
+
+
+  // useEffect(() => {
+  //   // If the user is not logged in, start the countdown timer
+  //   if (!isLoggedIn) {
+  //     const timer = setInterval(() => {
+  //       setSecs(prevSecs => prevSecs - 1);
+  //     }, 1000);
+
+  //     // When the timer reaches zero, navigate to the login page
+  //     if (secs === 0) {
+  //       clearInterval(timer);
+  //       navigate('/login');
+  //     }
+
+  //     // Clean up the timer when the component unmounts
+  //     return () => clearInterval(timer);
+  //   }
+  // }, [isLoggedIn, navigate, secs]);
+
 
 
 

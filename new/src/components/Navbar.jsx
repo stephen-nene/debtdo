@@ -23,7 +23,7 @@ export function Navbar({ props }) {
 
                     <div className="">
                         <NavLink to="/">
-                            <h1 className="font-bold text-2xl hover:text-gray-100">Debtodo</h1>
+                            <h1 className="font-bold text-2xl hover:text-yellow-400 font-croissant">Debtodo</h1>
                         </NavLink>
                     </div>
 
@@ -31,7 +31,7 @@ export function Navbar({ props }) {
                         <ul className="flex md:flex-row flex-col md:items-center md:gap-7 gap-4 text-xl">
                             <li>
                                 <NavLink
-                                    className="hover:text-gray-100"
+                                    className="hover:text-yellow-400"
                                     to="/debts"
                                 >
                                     Debts
@@ -39,7 +39,7 @@ export function Navbar({ props }) {
                             </li>
                             <li>
                                 <NavLink
-                                    className="hover:text-gray-100"
+                                    className="hover:text-yellow-400"
                                     to="/timebox"
                                 >
                                     Timebox
@@ -49,14 +49,14 @@ export function Navbar({ props }) {
                                 {!isLoggedIn ?
 
                                     <NavLink
-                                        className="hover:text-gray-100 "
+                                        className="hover:text-yellow-400 "
                                         to="/profile"
                                     >
                                         <BsFillPersonFill className="text-2xl" />
                                     </NavLink>
                                     :
                                     <NavLink
-                                        className="hover:text-gray-100"
+                                        className="hover:text-yellow-400"
                                         to="/login"
                                     >
                                         Login

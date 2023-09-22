@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,useNavigate } from "react-router-dom";
 
 
 import { Navbar } from './components/Navbar';
@@ -16,14 +16,18 @@ import './assets/styles/App.css';
 
 
 
+
 function App() {
-  // const count = useSelector(state => state.counter.count);
+  const darkMode = useSelector(state => state.app.darkMode);
   const dispatch = useDispatch();
-  const [darkMode, setDarkMode] = useState(false)
+  const navigate = useNavigate();
+  // const [darkMode, setDarkMode] = useState(false)
+
+
 
   return (
-    <div className="bg-gray-800 text-white h-screen">
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
+    <div className={`${darkMode? 'bg-gray-800':'bg-gray-600'} text-white h-screen`}>
+      <Navbar />
 
       <div className="py-[200px]">
 
