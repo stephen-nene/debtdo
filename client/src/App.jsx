@@ -10,7 +10,7 @@ import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import { HomeBox } from "./components/timebox/HomeBox";
 import { HomeDebt } from "./components/debts/HomeDebts";
-import Error404 from './components/Error404.jsx';
+import Error404 from './components/utils/Error404.jsx';
 import { Profile } from "./components/Profile";
 
 import { handleGetCurrentUser } from "./components/ServerCom";
